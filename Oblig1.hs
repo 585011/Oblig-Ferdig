@@ -48,7 +48,8 @@ locate :: String -> String -> [(Int,Int)]
 locate _ [] = [] -- basistilfelle, dersom ikkje finn.
 locate xs ys = finnInd xs ys 0
 
-finnInd :: String -> String -> Int -> [(Int,Int)] -- Hjelpemetode for å finne indexane til begge str's
+-- finnInd: Hjelpemetode for å finne indexane til begge str's
+finnInd :: String -> String -> Int -> [(Int,Int)] 
 finnInd _ [] _ = [] -- Basis
 finnInd xs ys tlr = indexa
       where 
@@ -58,11 +59,6 @@ finnInd xs ys tlr = indexa
 -- Oppgave 3 ----------------------------------------------------
 translate :: String -> String 
 translate a = unwords[x | (x,y) <- dictionary, a `elem` y]
---positions a xs = [fst x | x <- zip [1..] xs, snd x == a] 
--- a `elem` concat(map snd dictionary)
---forste n = [y | (x,y) <- dictionary, n==x]
-
---tall t = findIndices(==t) dictionary
 
 -- Oppgave 4 ----------------------------------------------------
 replace :: [(Int,Int)] -> String -> String 
@@ -103,4 +99,4 @@ fjern (x:xs) ys | x `elem` ys = fjern xs (rem1 ys x)
                 | otherwise = x : fjern xs ys
 -- Oppgave 7 ----------------------------------------------------
 main :: String -> (String, Int)
-main str = (toNewspeak str, analytics (translate str) str)
+main str = (toNewspeak str, analytics (toNewspeak str) str)
