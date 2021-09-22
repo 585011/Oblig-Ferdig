@@ -65,6 +65,7 @@ replace :: [(Int,Int)] -> String -> String
 replace [(x,y)] str = if translate (drop x str) /= ""
                        then take x str ++ translate(drop x str)
                        else stjrn (drop (y-x) str) (drop (y-x) str)  ++ (take y str)
+-- Lager stjerner.
 stjrn :: String -> String -> String 
 stjrn xs ys = [if x `elem` ys then '*' else x | x <- ys]
 
